@@ -1,18 +1,18 @@
 {
     "name": "isaac-application",
-    "image": "firekind/isaac:2020.2",
+    "image": "firekind/isaac:2020.2-deepstream-5.0.1-devel",
     "runArgs": [
-        "--runtime=nvidia",
-        "--net=host"
+        "--gpus=all",
+        "--net=host",
 
-        // add a device (eg: V4L2 camear)
-        // "--device=/dev/video2"
+        // add a device (eg: V4L2 camera)
+        "--device=/dev/video2"
     ],
     "mounts": [
         "source=isaac-sdk-build-cache,target=/root"
     ],
     "postCreateCommand": [
-        "python3 -m pip install -r requirements.txt"
+        "python3 -m pip install -r requirements.txt",
     ],
     "extensions": [
         "ms-python.python",

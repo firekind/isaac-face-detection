@@ -1,13 +1,8 @@
-load("@com_nvidia_isaac_sdk//bzl:py.bzl", "isaac_py_app")
+load("@com_nvidia_isaac_sdk//bzl:module.bzl", "isaac_app")
 
 filegroup(
-    name = "codelets",
-    srcs = glob(["codelets/*"]),
-)
-
-filegroup(
-    name = "utils",
-    srcs = glob(["utils/*"]),
+    name = "configs",
+    srcs = glob(["configs/*"]),
 )
 
 filegroup(
@@ -15,19 +10,16 @@ filegroup(
     srcs = glob(["graphs/*"]),
 )
 
-isaac_py_app(
-    name = "hello_world",
-    srcs = [
-        "main.py",
-        ":codelets",
-        ":utils",
-    ],
+isaac_app(
+    name = "face_detection",
+    app_json_file = "graphs/graph.app.json",
     data = [
-        ":graphs",
+        ":configs",
     ],
-    main = "main.py",
     modules = [
         "@com_nvidia_isaac_sdk//packages/sight",
+        "@com_nvidia_isaac_sdk//packages/viewers",
+        "@com_nvidia_isaac_sdk//packages/sensors:v4l2_camera",
+        "@com_nvidia_isaac_sdk//packages/deepstream"
     ],
-    deps = ["@com_nvidia_isaac_sdk//packages/pyalice"],
 )
