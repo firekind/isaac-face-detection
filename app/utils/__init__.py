@@ -1,0 +1,2 @@
+from .patch import patch_capnp_paths
+from .websight_config import configure_websight_root

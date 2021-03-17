@@ -1,0 +1,27 @@
+{
+    "name": "hello_world",
+    "modules": [
+        "@com_nvidia_isaac_sdk//packages/sight"
+    ],
+    "graph": {
+        "nodes": [
+            {
+                "name": "hello_node",
+                "components": [
+                    {
+                        "name": "print",
+                        "type": "isaac::alice::PyCodelet"
+                    }
+                ]
+            }
+        ],
+        "edges": []
+    },
+    "config": {
+        "websight": {
+            "WebsightServer": {
+                "port": 3000
+            }
+        }
+    }
+}
