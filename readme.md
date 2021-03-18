@@ -1,48 +1,36 @@
+# Face detection using Isaac and Deepstream
 
-# Isaac Application Template
+Face detection using Centerface, built using Isaac 2020.2 and Deepstream 5.0
 
-This is a template for developing isaac applications.
+## Setup
 
-## Run
-## Run without docker
-Download Nvidia Isaac 2020.2, and extract it in a local folder. Update the [`WORKSPACE`](https://github.com/firekind/isaac-template/blob/master/WORKSPACE#L4) by specifying the Isaac SDK folder for `ISAAC_SDK_RELEASE`
-
-You may need to build the Isaac SDK using
+Start a container using the `firekind/isaac:2020.2-deepstream-5.0.1-triton` image:
 
 ```
-$ bazel build ...
+$ docker run \
+    --gpus=all \
+    --net=host \
+    --mount source=isaac-sdk-build-cache,target=/root \
+    -v `pwd`:/workspaces \
+    -w /workspaces \
+    -it \
+    firekind/isaac:2020.2-deepstream-5.0.1-triton
 ```
 
-Although I have no idea when this should be done. Sometimes things work without doing it.
-
-To run the hello world application in this template, execute the command:
+Then, download the centerface model using
 
 ```
-$ bazel run //app:hello_world
+$ cd helpers && ./run.sh
 ```
 
-## Run with docker
+This will download the centerface model, and updates the dimension of the input and output nodes. (In Triton Inference Server, if you want the input and output nodes to have variable size then relevant dimensions should be specified as -1. `helpers/change_dim.py` reads the input ONNX model, updates the height and width dimensions to -1, and saves the resulting model.)
 
-Make sure docker and nvidia-docker is installed. The docker image `firekind/isaac:2020.2` can be used to run the application. Pull the image using:
-
-```
-$ docker pull firekind/isaac:2020.2
-```
-
-and create a container using
+Then, run the application using
 
 ```
-$ docker run --mount source=isaac-sdk-build-cache,target=/root -v <path to workspace directory>:/workspace -w /workspace --runtime=nvidia -it isaacbuild:latest /bin/bash
+$ bazel run //app:face_detection
 ```
 
-And then run the application using
+## Credits
 
-```
-$ bazel run //app:hello_world
-```
-
-VSCode users can use the [remote containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) along with the `.devcontainer/devcontainer.json` to develop inside a container.
-
-> **Note:** If you are using the Python API, take a look at [`main.py`](https://github.com/firekind/isaac-template/blob/master/app/main.py). There are a few lines of code that needs to be executed for everything to work.
-
-> **Also another Note:** The workspace doesn't include ros, zed, sensor certification, cartographer or prometheus. If they are needed, uncomment the corresponding lines in [`WORKSPACE`](https://github.com/firekind/isaac-template/blob/master/WORKSPACE)
+Most of the deepstream related code taken from [NVIDIA-AI-IOT](https://github.com/NVIDIA-AI-IOT/deepstream_triton_model_deploy).

@@ -6,8 +6,8 @@ filegroup(
 )
 
 filegroup(
-    name = "graphs",
-    srcs = glob(["graphs/*"]),
+    name = "libs",
+    srcs = glob(["lib/*"])
 )
 
 isaac_app(
@@ -15,6 +15,8 @@ isaac_app(
     app_json_file = "graphs/graph.app.json",
     data = [
         ":configs",
+        ":libs",
+        "//:model"
     ],
     modules = [
         "@com_nvidia_isaac_sdk//packages/sight",
