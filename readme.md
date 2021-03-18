@@ -25,6 +25,8 @@ $ cd helpers && ./run.sh
 
 This will download the centerface model, and updates the dimension of the input and output nodes. (In Triton Inference Server, if you want the input and output nodes to have variable size then relevant dimensions should be specified as -1. `helpers/change_dim.py` reads the input ONNX model, updates the height and width dimensions to -1, and saves the resulting model.)
 
+If needed, edit the `device_id` under the `config` section of [`app/graphs/graph.app.json`](https://github.com/firekind/isaac_deepstream_yolo/blob/master/app/graphs/graph.app.json#L74)
+
 Then, run the application using
 
 ```
