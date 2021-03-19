@@ -1,5 +1,11 @@
 filegroup(
-    name = "model",
-    srcs = glob(["model/**"]),
+    name = "centerface",
+    srcs = glob(["model/center_face/*"]),
+    visibility = ["//visibility:public"]
+)
+
+filegroup(
+    name = "facedetectir",
+    srcs = glob(["model/facedetectir/*"]),
     visibility = ["//visibility:public"]
 )

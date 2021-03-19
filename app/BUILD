@@ -11,12 +11,12 @@ filegroup(
 )
 
 isaac_app(
-    name = "face_detection",
-    app_json_file = "graphs/graph.app.json",
+    name = "centerface",
+    app_json_file = "graphs/graph-centerface.app.json",
     data = [
         ":configs",
         ":libs",
-        "//:model"
+        "//:centerface"
     ],
     modules = [
         "@com_nvidia_isaac_sdk//packages/sight",
@@ -27,12 +27,12 @@ isaac_app(
 )
 
 isaac_app(
-    name = "face_detection_jetson",
-    app_json_file = "graphs/graph-jetson.app.json",
+    name = "facedetectir",
+    app_json_file = "graphs/graph-facedetectir.app.json",
     data = [
         ":configs",
         ":libs",
-        "//:model"
+        "//:facedetectir"
     ],
     modules = [
         "@com_nvidia_isaac_sdk//packages/sight",
@@ -43,6 +43,11 @@ isaac_app(
 )
 
 isaac_pkg(
-    name = "face_detection_pkg",
-    srcs = [ ":face_detection_jetson" ]
+    name = "face_detection_centerface_pkg",
+    srcs = [ ":centerface" ]
+)
+
+isaac_pkg(
+    name = "face_detection_facedetectir_pkg",
+    srcs = [ ":facedetectir" ]
 )
