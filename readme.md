@@ -78,4 +78,4 @@ $ bazel run //app:facedetectir_realsense
 
 ## Credits
 
-Most of the deepstream related code taken from [NVIDIA-AI-IOT](https://github.com/NVIDIA-AI-IOT/deepstream_triton_model_deploy).
+Most of the deepstream related code for centerface was taken from [NVIDIA-AI-IOT](https://github.com/NVIDIA-AI-IOT/deepstream_triton_model_deploy).
