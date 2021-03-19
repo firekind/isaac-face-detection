@@ -4,7 +4,7 @@ Face detection using Centerface, built using Isaac 2020.2 and Deepstream 5.0
 
 ## Setup
 
-Start a container using the `firekind/isaac:2020.2-deepstream-5.0.1-triton` image:
+Start a container using the `firekind/isaac:2020.2-deepstream-5.0.1-triton` image (for centerface) or `firekind/isaac:2020.2-deepstream-5.0.1-base` (for facedetectir):
 
 ```
 $ docker run \
@@ -14,7 +14,7 @@ $ docker run \
     -v `pwd`:/workspaces \
     -w /workspaces \
     -it \
-    firekind/isaac:2020.2-deepstream-5.0.1-triton
+    <image tag>
 ```
 
 Take a note of the device id of the v4l2 camera. Update the `device_id` in the `config` section of the graph (in `app/graphs`) which you will use.
@@ -28,8 +28,6 @@ $ cd helpers && ./download_centerface.sh
 ```
 
 This will download the centerface model, and updates the dimension of the input and output nodes. (In Triton Inference Server, if you want the input and output nodes to have variable size then relevant dimensions should be specified as -1. `helpers/change_dim.py` reads the input ONNX model, updates the height and width dimensions to -1, and saves the resulting model.)
-
-If needed, edit the `device_id` under the `config` section of [`app/graphs/graph.app.json`](https://github.com/firekind/isaac_deepstream_yolo/blob/master/app/graphs/graph.app.json#L74)
 
 Then, run the application using
 
