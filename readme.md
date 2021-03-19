@@ -1,6 +1,6 @@
 # Face detection using Isaac and Deepstream
 
-Face detection using Centerface, built using Isaac 2020.2 and Deepstream 5.0
+Face detection using Centerface and FaceDetectIR, built using Isaac 2020.2 and Deepstream 5.0
 
 ## Setup
 
