@@ -17,6 +17,8 @@ $ docker run \
     firekind/isaac:2020.2-deepstream-5.0.1-triton
 ```
 
+Take a note of the device id of the v4l2 camera. Update the `device_id` in the `config` section of the graph (in `app/graphs`) which you will use.
+
 ### Centerface
 
 Download the centerface model using
