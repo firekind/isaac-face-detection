@@ -1,6 +1,6 @@
 filegroup(
     name = "centerface",
-    srcs = glob(["model/center_face/*"]),
+    srcs = glob(["model/centerface/**"]),
     visibility = ["//visibility:public"]
 )
 
