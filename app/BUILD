@@ -75,6 +75,11 @@ isaac_app(
 )
 
 isaac_pkg(
-    name = "face_detection_facedetectir_pkg",
+    name = "facedetectir_pkg",
     srcs = [ ":facedetectir" ]
+)
+
+isaac_pkg(
+    name = "facedetectir_realsense_pkg",
+    srcs = [ ":facedetectir_realsense" ]
 )

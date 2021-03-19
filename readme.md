@@ -52,7 +52,7 @@ $ bazel run //app:facedetectir
 This model can be deployed on jetson as well, using the `deploy.sh` script.
 
 ```
-$ ./deploy.sh --remote_user <username_on_jetson> -p //app:face_detection_facedetectir_pkg -d jetpack44 -h <jetson_ip>
+$ ./deploy.sh --remote_user <username_on_jetson> -p //app:facedetectir_pkg -d jetpack44 -h <jetson_ip>
 ```
 
 And on jetson, execute:
