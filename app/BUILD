@@ -43,11 +43,6 @@ isaac_app(
 )
 
 isaac_pkg(
-    name = "face_detection_centerface_pkg",
-    srcs = [ ":centerface" ]
-)
-
-isaac_pkg(
     name = "face_detection_facedetectir_pkg",
     srcs = [ ":facedetectir" ]
 )
