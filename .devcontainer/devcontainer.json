@@ -4,9 +4,7 @@
     "runArgs": [
         "--gpus=all",
         "--net=host",
-
-        // add a device (eg: V4L2 camera)
-        "--device=/dev/video2"
+        "--privileged",
     ],
     "mounts": [
         "source=isaac-sdk-build-cache,target=/root"

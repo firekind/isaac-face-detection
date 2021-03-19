@@ -29,8 +29,8 @@ isaac_assets_workspace()
 # isaac_ros_workspace()
 
 # uncomment the next two lines if zed is required
-# load("@com_nvidia_isaac_sdk//third_party:zed.bzl", "isaac_zed_workspace")
-# isaac_zed_workspace()
+load("@com_nvidia_isaac_sdk//third_party:zed.bzl", "isaac_zed_workspace")
+isaac_zed_workspace()
 
 # uncomment the next two lines if sensor certification is required
 # load("@com_nvidia_isaac_sdk//packages/sensor_certification:sensor_certification.bzl", "sensor_certification_workspace")
@@ -66,27 +66,24 @@ boost_deps()
 ####################################################################################################
 
 # uncomment the following if cartographer is required
-# isaac_http_archive(
-#     name = "com_github_googlecartographer_cartographer",
-#     licenses = ["@com_github_googlecartographer_cartographer//:LICENSE"],
-#     sha256 = "a52591e5f7cd2a4bb63c005addbcfaa751cd0b19a223c800b5e90afb5055d946",
-#     type = "tar.gz",
-#     url = "https://developer.nvidia.com/isaac/download/third_party/cartographer-bcd5486025df4f601c3977c44a5e00e9c80b4975-tar-gz",
-# )
+isaac_http_archive(
+    name = "com_github_googlecartographer_cartographer",
+    licenses = ["@com_github_googlecartographer_cartographer//:LICENSE"],
+    sha256 = "a52591e5f7cd2a4bb63c005addbcfaa751cd0b19a223c800b5e90afb5055d946",
+    type = "tar.gz",
+    url = "https://developer.nvidia.com/isaac/download/third_party/cartographer-bcd5486025df4f601c3977c44a5e00e9c80b4975-tar-gz",
+)
+load("@com_github_googlecartographer_cartographer//:bazel/repositories.bzl", "cartographer_repositories")
+cartographer_repositories()
 
-# load("@com_github_googlecartographer_cartographer//:bazel/repositories.bzl", "cartographer_repositories")
+# Loads Google grpc C++ library (https://grpc.io/) explicitly for cartographer
+load("@com_github_grpc_grpc//bazel:grpc_deps.bzl", "grpc_deps")
+grpc_deps()
 
-# cartographer_repositories()
-
-# # Loads Google grpc C++ library (https://grpc.io/) explicitly for cartographer
-# load("@com_github_grpc_grpc//bazel:grpc_deps.bzl", "grpc_deps")
-
-# grpc_deps()
-
-# bind(
-#    name = "zlib",
-#    actual = "@net_zlib_zlib//:zlib",
-# )
+bind(
+   name = "zlib",
+   actual = "@net_zlib_zlib//:zlib",
+)
 
 ####################################################################################################
 

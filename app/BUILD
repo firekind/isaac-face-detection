@@ -27,6 +27,38 @@ isaac_app(
 )
 
 isaac_app(
+    name = "centerface_realsense",
+    app_json_file = "graphs/graph-centerface-realsense.app.json",
+    data = [
+        ":configs",
+        ":libs",
+        "//:centerface"
+    ],
+    modules = [
+        "@com_nvidia_isaac_sdk//packages/sight",
+        "@com_nvidia_isaac_sdk//packages/viewers",
+        "@com_nvidia_isaac_sdk//packages/realsense",
+        "@com_nvidia_isaac_sdk//packages/deepstream"
+    ],
+)
+
+isaac_app(
+    name = "facedetectir_realsense",
+    app_json_file = "graphs/graph-facedetectir-realsense.app.json",
+    data = [
+        ":configs",
+        ":libs",
+        "//:facedetectir"
+    ],
+    modules = [
+        "@com_nvidia_isaac_sdk//packages/sight",
+        "@com_nvidia_isaac_sdk//packages/viewers",
+        "@com_nvidia_isaac_sdk//packages/realsense",
+        "@com_nvidia_isaac_sdk//packages/deepstream"
+    ],
+)
+
+isaac_app(
     name = "facedetectir",
     app_json_file = "graphs/graph-facedetectir.app.json",
     data = [

@@ -62,6 +62,20 @@ $ cd ~/deploy/face_detection_facedetectir_pkg
 $ ./app/run_facedetectir
 ```
 
+### Realsense
+
+Centerface and FaceDetectIR can be run using a realsense camera as well. For centerface,
+
+```
+$ bazel run //app:centerface_realsense
+```
+
+and for facedetectir,
+
+```
+$ bazel run //app:facedetectir_realsense
+```
+
 ## Credits
 
 Most of the deepstream related code taken from [NVIDIA-AI-IOT](https://github.com/NVIDIA-AI-IOT/deepstream_triton_model_deploy).
