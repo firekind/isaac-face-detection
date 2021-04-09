@@ -71,7 +71,7 @@
     "config": {
         "camera": {
             "v4l2": {
-                "device_id": 2,
+                "device_id": 0,
                 "rows": 480,
                 "cols": 640,
                 "rate_hz": 30

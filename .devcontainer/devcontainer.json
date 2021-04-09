@@ -1,6 +1,6 @@
 {
     "name": "isaac-application",
-    "image": "firekind/isaac:2020.2-deepstream-5.0.1-triton",
+    "image": "firekind/isaac:2020.2",
     "runArgs": [
         "--gpus=all",
         "--net=host",
